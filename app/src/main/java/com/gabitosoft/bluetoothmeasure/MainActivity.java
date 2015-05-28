@@ -46,16 +46,16 @@ public class MainActivity extends Activity {
 
                                     Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
                                     startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-//                                    String mydeviceaddress = bluetooth.getAddress();
-//                                    String mydevicename = bluetooth.getName();
-//                                    status.setText(mydevicename + " : " + mydeviceaddress);
+                                    String mydeviceaddress = bluetooth.getAddress();
+                                    String mydevicename = bluetooth.getName();
+                                    status.setText(mydevicename + " : " + mydeviceaddress);
                                 }
                             } else {
 
                                 Toast.makeText(context, "UNCHECKED", Toast.LENGTH_SHORT).show();
                                 if (bluetooth.isEnabled()) {
-//                                    status.setText("Bluetooth is not enabled");
-//                                    bluetooth.disable();
+                                    status.setText("Bluetooth is not enabled");
+                                    bluetooth.disable();
                                 }
                             }
                         } else {
