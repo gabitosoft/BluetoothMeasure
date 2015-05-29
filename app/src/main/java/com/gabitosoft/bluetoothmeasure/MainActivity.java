@@ -20,7 +20,7 @@ public class MainActivity extends Activity {
     private ToggleButton toggleButton;
     private Context context;
 
-    private int REQUEST_ENABLE_BT = 1;
+    private int REQUEST_ENABLE_BT = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,30 +37,36 @@ public class MainActivity extends Activity {
                     @Override
                     public void onClick(View v) {
 
-                        if (bluetooth != null) {
+                        try {
 
-                            if(toggleButton.isChecked()) {
+                            if (bluetooth != null) {
 
-                                Toast.makeText(context, "CHECKED", Toast.LENGTH_SHORT).show();
-                                if (!bluetooth.isEnabled()) {
+                                if(toggleButton.isChecked()) {
 
-                                    Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
-                                    startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
-                                    String mydeviceaddress = bluetooth.getAddress();
-                                    String mydevicename = bluetooth.getName();
-                                    status.setText(mydevicename + " : " + mydeviceaddress);
+                                    Toast.makeText(context, "CHECKED", Toast.LENGTH_SHORT).show();
+                                    if (!bluetooth.isEnabled()) {
+
+                                        Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
+                                        startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+                                        String mydeviceaddress = bluetooth.getAddress();
+                                        String mydevicename = bluetooth.getName();
+                                        status.setText(mydevicename + " : " + mydeviceaddress);
+                                    }
+                                } else {
+
+                                    Toast.makeText(context, "UNCHECKED", Toast.LENGTH_SHORT).show();
+                                    if (bluetooth.isEnabled()) {
+                                        status.setText("Bluetooth is not enabled");
+                                        bluetooth.disable();
+                                    }
                                 }
                             } else {
 
-                                Toast.makeText(context, "UNCHECKED", Toast.LENGTH_SHORT).show();
-                                if (bluetooth.isEnabled()) {
-                                    status.setText("Bluetooth is not enabled");
-                                    bluetooth.disable();
-                                }
+                                Toast.makeText(context, "Bluetooth Adapter Undefined", Toast.LENGTH_LONG).show();
                             }
-                        } else {
+                        } catch(Exception ex) {
 
-                            Toast.makeText(context, "Bluetooth Adapter Undefined", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, ex.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     }
                 });
