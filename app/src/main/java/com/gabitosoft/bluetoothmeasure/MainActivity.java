@@ -3,6 +3,7 @@ package com.gabitosoft.bluetoothmeasure;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,18 +21,20 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
 
         ActionBar actionBar = getActionBar();
+        actionBar.setIcon(new ColorDrawable(getResources().getColor(android.R.color.transparent)));
         actionBar.setDisplayHomeAsUpEnabled(false);
-        actionBar.setDisplayShowTitleEnabled(false);
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-        configTab = actionBar.newTab().setIcon(R.drawable.tank_icon);
-        graphicTab = actionBar.newTab().setIcon(R.drawable.gear_icon);
+        graphicTab = actionBar.newTab().setIcon(R.drawable.tank_icon);
+        configTab = actionBar.newTab().setIcon(R.drawable.gear_icon);
 
         configTab.setTabListener(new TabListener(configFragment));
         graphicTab.setTabListener(new TabListener(graphicFragment));
 
-        actionBar.addTab(configTab);
         actionBar.addTab(graphicTab);
+        actionBar.addTab(configTab);
+
+        actionBar.setSelectedNavigationItem(0);
     }
 
     @Override
