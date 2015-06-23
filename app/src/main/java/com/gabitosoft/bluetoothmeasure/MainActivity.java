@@ -7,6 +7,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 
 public class MainActivity extends Activity {
@@ -14,6 +15,8 @@ public class MainActivity extends Activity {
     ActionBar.Tab configTab, graphicTab;
     Fragment configFragment = new FragmentConfiguration();
     Fragment graphicFragment = new FragmentGraphic();
+
+    private TextView textView3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +38,9 @@ public class MainActivity extends Activity {
         actionBar.addTab(configTab);
 
         actionBar.setSelectedNavigationItem(0);
+
+        textView3 = (TextView)findViewById(R.id.textView3);
+        textView3.setText("Hola Mundo");
     }
 
     @Override

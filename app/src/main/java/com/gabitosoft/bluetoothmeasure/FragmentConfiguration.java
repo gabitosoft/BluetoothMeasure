@@ -18,7 +18,6 @@ import android.widget.ToggleButton;
 public class FragmentConfiguration extends Fragment {
 
     private BluetoothAdapter bluetooth;
-    private TextView status;
     private ToggleButton toggleButton;
     //private Context context;
 
@@ -29,8 +28,7 @@ public class FragmentConfiguration extends Fragment {
 
         View rootView = inflater.inflate(R.layout.configuration_layout, container, false);
 
-//        bluetooth = BluetoothAdapter.getDefaultAdapter();
-//        status = (TextView)findViewById(R.id.textView);
+        bluetooth = BluetoothAdapter.getDefaultAdapter();
 //
 //        toggleButton = (ToggleButton) findViewById(R.id.toggleButton);
 //
