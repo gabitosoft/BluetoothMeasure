@@ -16,8 +16,6 @@ public class MainActivity extends Activity {
     Fragment configFragment = new FragmentConfiguration();
     Fragment graphicFragment = new FragmentGraphic();
 
-    private TextView textView3;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +36,6 @@ public class MainActivity extends Activity {
         actionBar.addTab(configTab);
 
         actionBar.setSelectedNavigationItem(0);
-
-        textView3 = (TextView)findViewById(R.id.textView3);
-        textView3.setText("Hola Mundo");
     }
 
     @Override
